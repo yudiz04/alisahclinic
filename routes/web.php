@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SpecialistController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +18,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+Route::get('/register', [AuthController::class, 'registrasi'])->name('register');
+Route::post('/register', [AuthController::class, 'registrasiStore']);
+
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/login', [AuthController::class, 'loginStore']);
+Route::get('/logout', [AuthController::class, 'logout']);
+
+Route::group(['middleware' => ['auth', 'super']], function(){
 Route::get('/home', [HomeController::class, 'index']);
+Route::resource('specialist', SpecialistController::class);
+Route::resource('doctor', DoctorController::class);
+Route::resource('appointment', AppointmentController::class);
+});
