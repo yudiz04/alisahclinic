@@ -18,27 +18,47 @@
     <link rel="stylesheet" href="{{asset('assets/app/css/style.css')}}">
 </head>
 <body>
-
     <div class="main">
-
         <div class="container">
             <form method="POST" class="appointment-form" id="appointment-form">
-                <h2>education appointment form</h2>
+                <h2>Form Janji Temu Pasien</h2>
                 <div class="form-group-1">
-                    <input type="text" name="title" id="title" placeholder="Title" required />
-                    <input type="text" name="name" id="name" placeholder="Your Name" required />
-                    <input type="email" name="email" id="email" placeholder="Email" required />
-                    <input type="number" name="phone_number" id="phone_number" placeholder="Phone number" required />
                     <div class="select-list">
-                        <select name="course_type" id="course_type">
-                            <option slected value="">Course Type</option>
+                        <select name="specialist" id="specialist">
+                            <option slected value="">Pilih Spesialist</option>
                             <option value="society">Society</option>
                             <option value="language">Language</option>
                         </select>
                     </div>
+                    <div class="select-list">
+                        <select name="doctor" id="doctor">
+                            <option slected value="">Pilih Dokter</option>
+                            <option value="society">Society</option>
+                            <option value="language">Language</option>
+                        </select>
+                    </div>
+                    <div class="select-list">
+                        <select name="date" id="date">
+                            <option slected value="">Pilih Tanggal</option>
+                            <option value="society">Society</option>
+                            <option value="language">Language</option>
+                        </select>
+                    </div>
+                    <div class="select-list">
+                        <select name="time" id="time">
+                            <option slected value="">Pilih Waktu</option>
+                            <option value="society">Society</option>
+                            <option value="language">Language</option>
+                        </select>
+                    </div>
+                    <input type="text" name="request" id="request" placeholder="Keluhan" required />
                 </div>
                 <div class="form-group-2">
-                    <h3>How would you like to bo located ?</h3>
+                    <h3>Data Pasien</h3>
+                    <input type="text" name="name" id="name" placeholder="Nama" required />
+                    <input type="text" name="gender" id="gender" placeholder="Jenis Kelamin" required />
+                    <input type="email" name="email" id="email" placeholder="Email" required />
+                    <input type="number" name="phone_number" id="phone_number" placeholder="No HP" required />
                     <div class="select-list">
                         <select name="confirm_type" id="confirm_type">
                             <option seleected value="">By phone</option>
@@ -57,13 +77,11 @@
                     <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree to the  <a href="#" class="term-service">Terms and Conditions</a></label>
                 </div>
                 <div class="form-submit">
-                    <input type="submit" name="submit" id="submit" class="submit" value="Request an appointment" />
+                    <input type="submit" name="submit" id="submit" class="submit" value="Submit" />
                 </div>
             </form>
         </div>
-
     </div>
-
     <!-- JS -->
     <script src="{{asset('assets/app/vendor/jquery/jquery.min.js')}}"></script>
     <script src="{{asset('assets/app/js/main.js')}}"></script>
