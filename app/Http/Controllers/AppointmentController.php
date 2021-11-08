@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Specialist;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AppointmentController extends Controller
@@ -17,7 +18,9 @@ class AppointmentController extends Controller
     public function index()
     {
         $appointment = Appointment::all();
-        return view('appointment.index', compact('appointment'));
+        $specialist = Specialist::all();
+        $doctor = Doctor::all();
+        return view('appointment.index', compact('appointment', 'specialist', 'doctor'));
     }
 
     /**
@@ -27,7 +30,9 @@ class AppointmentController extends Controller
      */
     public function create()
     {
-        //
+        $specialist = Specialist::all();
+        $doctor = Doctor::all();
+        return view('appoinment.index', compact('specialist', 'doctor'));
     }
 
     /**
@@ -38,7 +43,35 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        $request->validate([
+            'subject' => 'required',
+            'doctor' => 'required',
+            'date' => 'required',
+            'time' => 'required',
+            'request' => 'required',
+            'name' => 'required',
+            'gender' => 'required',
+            'birth' => 'required',
+            'email' => 'required|email',
+            'contact' => 'required'
+        ]);
+
+        Appointment::create([
+
+            'specialist_id' => $request->subject,
+            'doctor_id' => $request->doctor,
+            'date' => $request->date,
+            'time' => $request->time,
+            'request' => $request->request,
+            'patient_name' => $request->name,
+            'gender' => $request->gender,
+            'birth' => $request->birth,
+            'email' => $request->email,
+            'contact' => $request->contact
+        ]);
+
+        return redirect('/home')->with('Janji', 'berhasil ditambahkan');
     }
 
     /**
@@ -83,6 +116,68 @@ class AppointmentController extends Controller
      */
     public function destroy(Appointment $appointment)
     {
-        //
+        {}
+    }
+
+    public function coba(Request $request)
+    {
+        $search = $request->cari;
+
+        $data_pasien = DB::table('specialists')
+                            ->join('doctors', 'doctors.specialist_id', '=', 'specialist_id')
+                            ->select('doctor.id','doctor.name')
+                            ->limit(5);
+
+        $search = !empty($request->cari) ? ($request->cari) : ('');
+        
+        if($search){
+            $data_pasien->where('specialists.id', 'like', '%' .$search . '%');
+         }
+
+         $data = $data_pasien->limit(5)->get();
+
+         $response = array();
+        foreach($data as $pasien){
+           $response[] = array(
+               "value" => $pasien->id,
+               "label" => $pasien->nama_pasien,
+               "faskes" => $pasien->nama_faskes,
+               "kecamatan" => $pasien->nama_kecamatan
+            );
+        }
+        return response()->json($response);
+
+    }
+
+    public function data_pasien(Request $request)
+    {
+        $search = $request->cari;
+
+        $specialist = DB::table('specialists')
+                            ->join('doctors', 'doctors.specialist_id', '=', 'specialist_id')
+                            
+                            ->select('doctor.id','doctor.name')
+                            ->limit(5);
+
+        $search = !empty($request->cari) ? ($request->cari) : ('');
+
+        if($search){
+           $data_pasien->where('data_pasien.nama_pasien', 'like', '%' .$search . '%');
+        }
+
+        $data = $data_pasien->limit(5)->get();
+  
+        $response = array();
+        foreach($data as $pasien){
+           $response[] = array(
+               "value" => $pasien->id,
+               "label" => $pasien->nama_pasien,
+               "faskes" => $pasien->nama_faskes,
+               "kecamatan" => $pasien->nama_kecamatan
+            );
+        }
+        return response()->json($response);
     }
 }
+
+

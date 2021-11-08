@@ -43,7 +43,7 @@
               <a href="#"><span class="mai-logo-dribbble"></span></a>
               <a href="#"><span class="mai-logo-instagram"></span></a>
             </div>
-          </div>
+          </div> 
         </div> <!-- .row -->
       </div> <!-- .container -->
     </div> <!-- .topbar -->
@@ -100,7 +100,33 @@
 
 
   <div class="bg-light">
-    <div class="page-section py-3 mt-md-n5 custom-index">
+    <div class="container">
+    <div class="search_box">
+			<div class="row">
+				<div class="col-sm-3">
+					<div class="form-group">
+              <input type="text" class="email_boton" placeholder="Search for" name="Email">
+          </div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+              <input type="text" class="email_boton" placeholder="Loction in" name="Email">
+          </div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+              <input type="text" class="email_boton" placeholder="category" name="Email">
+          </div>
+				</div>
+				<div class="col-sm-3">
+					<div class="form-group">
+                        <button class="search_bt">Search</button>
+          </div>
+				</div>
+			</div>
+		</div>
+    </div>
+    {{-- <div class="page-section py-3 mt-md-n5 custom-index">
       <div class="container">
         <div class="row justify-content-center">
           <div class="col-md-4 py-3 py-md-0">
@@ -129,7 +155,7 @@
           </div>
         </div>
       </div>
-    </div> <!-- .page-section -->
+    </div> <!-- .page-section --> --}}
 
     <div class="page-section pb-0">
       <div class="container">
