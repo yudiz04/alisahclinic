@@ -7,10 +7,10 @@
     <title>Sign Up Form</title>
 
     <!-- Font Icon -->
-    <link rel="stylesheet" href="{{asset('assets/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/admin/fonts/material-icon/css/material-design-iconic-font.min.css')}}">
 
     <!-- Main css -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('assets/admin/css/style.css')}}">
 </head>
 <body>
 
@@ -54,7 +54,7 @@
     </div>
 
     <!-- JS -->
-    <script src="{{asset('assets/vendor/jquery/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{asset('assets/admin/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/admin/js/main.js')}}"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

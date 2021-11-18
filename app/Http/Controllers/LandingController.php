@@ -13,7 +13,7 @@ class LandingController extends Controller
      */
     public function index() 
     {
-        return view('landingpage.index1');
+        return view('landingpage.index');
     }
 
     /**
