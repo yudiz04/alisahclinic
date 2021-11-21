@@ -11,7 +11,7 @@
               alias tenetur eveniet illum reprehenderit fugit a delectus officiis blanditiis ea.
             </p>
           </div>
-        </div>
+        </div> 
         <div class="col-lg-3">
           <h4 class="links">
             Links
@@ -83,4 +83,36 @@
     </div>
   </footer>
 
-  <script src="{{asset('user/js/bootstrap.min.js')}}"></script>
+  
+  
+  <script src="{{asset('assets/user/js/bootstrap.min.js')}}"></script> 
+  
+  <script>
+    $(document).ready(function() {
+      $('#specialist').on('change', function() {
+        let id = $(this).val();
+        $('#doctor').empty();
+        $('#doctor').append('<a class="dropdown-item" disabled>Processing...</a>');
+        $.ajak({
+          type:'GET',
+          url:'getdoctor/'+id,
+          success: function(response) {
+            var response = JSON.parse(response);
+            console.log.(response);
+            $('#doctor').empty();
+            response.forEach(element => {
+              $('#doctor').append(
+                `<option value="${element['id']}">${element['name']}</option>`
+              );
+          });
+        }
+      });
+    });
+  });
+  </script>
+
+  {{-- <script src="{{asset('assets/user/vendor/jquery/jquery.min.js')}}"></script>
+  <script src="{{asset('assets/user/js/main.js')}}"></script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script> --}}

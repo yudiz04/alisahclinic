@@ -15,17 +15,24 @@
 
   <section id="appoinment">
     <div class="container">
-      <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+      <form action="{{url('/')}}" id="form_id">
+      <select id="specialist" name="specialist" class="form-select form-select-sm" aria-label=".form-select-sm example"
+      onChange="document.getElementById('form_id').submit();" required>
         <option selected>Pilih Spesialis</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        @foreach ($specialist as $item)
+        <option @if($specialist_id==$item->id) ? {{'selected'}} : '' @endif value="{{ $item->id }}">{{ $item->subject }}</option>
+        @endforeach
+        
       </select>
-      <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+      </form>
+      <select id="doctor" class="form-select form-select-sm" aria-label=".form-select-sm example">
         <option selected>Pilih Dokter</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        @foreach ($doctor as $item)
+        <option value="{{ $item->id }}">{{ $item->name }}</option>
+        @endforeach
+
+        
+
       </select>
       <select class="form-select form-select-sm" aria-label=".form-select-sm example">
         <option selected>Pilih Tanggal</option>
@@ -67,7 +74,7 @@
     <h3 class="text-center pb-3">ARTIKEL</h3>
     <div class="row justify-content-center pt-3">
       <div class="card" style="width: 18rem;">
-        <img src="{{asset('assets/user/img/1.jpg')" class="card-img-top" alt="...">
+        <img src="{{asset('assets/user/img/1.jpg')}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
@@ -76,7 +83,7 @@
         </div>
       </div>
       <div class="card" style="width: 18rem;">
-        <img src="/img/2.jpg" class="card-img-top" alt="...">
+        <img src="{{asset('assets/user/img/2.jpg')}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
@@ -85,7 +92,7 @@
         </div>
       </div>
       <div class="card" style="width: 18rem;">
-        <img src="/img/3.jpg" class="card-img-top" alt="...">
+        <img src="{{asset('assets/user/img/3.jpg')}}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">Card title</h5>
           <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
@@ -95,8 +102,8 @@
       </div>
     </div>
   </section>
+  
 </body>
 
 @endsection
 
-</html>

@@ -1,4 +1,4 @@
-@extends('admin.master')
+{{-- @extends('admin.master')
 @section('title', 'appointment')
 
 @section('content')
@@ -139,7 +139,7 @@
                         <label for="agree-term" class="label-agree-term"><span><span></span></span>I agree to the <a
                                 href="#" class="term-service">Terms and Conditions</a></label>
                     </div> --}}
-                    <div class="form-submit">
+                    {{-- <div class="form-submit">
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </form>
@@ -156,4 +156,4 @@
 
     </html>
 
-@endsection
+@endsection --}} 

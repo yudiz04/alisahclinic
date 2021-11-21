@@ -20,7 +20,7 @@ class AppointmentController extends Controller
         $appointment = Appointment::all();
         $specialist = Specialist::all();
         $doctor = Doctor::all();
-        return view('appointment.index', compact('appointment', 'specialist', 'doctor'));
+        return view('landingpage.appointment', compact('appointment', 'specialist', 'doctor'));
     }
 
     /**
@@ -32,7 +32,7 @@ class AppointmentController extends Controller
     {
         $specialist = Specialist::all();
         $doctor = Doctor::all();
-        return view('appoinment.index', compact('specialist', 'doctor'));
+        return view('landingpage.appointment', compact('specialist', 'doctor'));
     }
 
     /**
@@ -43,16 +43,17 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request;
+        //return $request;
+        // dd($request->all());
         $request->validate([
             'subject' => 'required',
             'doctor' => 'required',
             'date' => 'required',
             'time' => 'required',
-            'request' => 'required',
+            'keluhan' => 'required',
             'name' => 'required',
-            'gender' => 'required',
             'birth' => 'required',
+            'gender' => 'required',
             'email' => 'required|email',
             'contact' => 'required'
         ]);
@@ -61,17 +62,30 @@ class AppointmentController extends Controller
 
             'specialist_id' => $request->subject,
             'doctor_id' => $request->doctor,
+            'request' => $request->keluhan,
             'date' => $request->date,
-            'time' => $request->time,
-            'request' => $request->request,
+            'time' => "Pagi",
             'patient_name' => $request->name,
-            'gender' => $request->gender,
+            'gender' => "Pria",
             'birth' => $request->birth,
             'email' => $request->email,
             'contact' => $request->contact
         ]);
 
-        return redirect('/home')->with('Janji', 'berhasil ditambahkan');
+        // $appointment=new Appointment;
+        // $appointment->specialist_id = $request->subject;
+        // $appointment->doctor_id = $request->doctor;
+        // $appointment->request = $request->keluhan;
+        // // // $appointment->date = $request->date;
+        // // $appointment->time = $request->time;
+        // // $appointment->patient_name = $request->name;
+        // // $appointment->gender = $request->gender;
+        // // // $appointment->birth = $request->birth;
+        // // $appointment->email = $request->email;
+        // // $appointment->contact = $request->contact;
+        // $appointment->save();
+
+        // return redirect('/home')->with('Janji', 'berhasil ditambahkan');
     }
 
     /**
@@ -119,65 +133,65 @@ class AppointmentController extends Controller
         {}
     }
 
-    public function coba(Request $request)
-    {
-        $search = $request->cari;
+    // public function coba(Request $request)
+    // {
+    //     $search = $request->cari;
 
-        $data_pasien = DB::table('specialists')
-                            ->join('doctors', 'doctors.specialist_id', '=', 'specialist_id')
-                            ->select('doctor.id','doctor.name')
-                            ->limit(5);
+    //     $data_pasien = DB::table('specialists')
+    //                         ->join('doctors', 'doctors.specialist_id', '=', 'specialist_id')
+    //                         ->select('doctor.id','doctor.name')
+    //                         ->limit(5);
 
-        $search = !empty($request->cari) ? ($request->cari) : ('');
+    //     $search = !empty($request->cari) ? ($request->cari) : ('');
         
-        if($search){
-            $data_pasien->where('specialists.id', 'like', '%' .$search . '%');
-         }
+    //     if($search){
+    //         $data_pasien->where('specialists.id', 'like', '%' .$search . '%');
+    //      }
 
-         $data = $data_pasien->limit(5)->get();
+    //      $data = $data_pasien->limit(5)->get();
 
-         $response = array();
-        foreach($data as $pasien){
-           $response[] = array(
-               "value" => $pasien->id,
-               "label" => $pasien->nama_pasien,
-               "faskes" => $pasien->nama_faskes,
-               "kecamatan" => $pasien->nama_kecamatan
-            );
-        }
-        return response()->json($response);
+    //      $response = array();
+    //     foreach($data as $pasien){
+    //        $response[] = array(
+    //            "value" => $pasien->id,
+    //            "label" => $pasien->nama_pasien,
+    //            "faskes" => $pasien->nama_faskes,
+    //            "kecamatan" => $pasien->nama_kecamatan
+    //         );
+    //     }
+    //     return response()->json($response);
 
-    }
+    // }
 
-    public function data_pasien(Request $request)
-    {
-        $search = $request->cari;
+    // public function data_pasien(Request $request)
+    // {
+    //     $search = $request->cari;
 
-        $specialist = DB::table('specialists')
-                            ->join('doctors', 'doctors.specialist_id', '=', 'specialist_id')
+    //     $specialist = DB::table('specialists')
+    //                         ->join('doctors', 'doctors.specialist_id', '=', 'specialist_id')
                             
-                            ->select('doctor.id','doctor.name')
-                            ->limit(5);
+    //                         ->select('doctor.id','doctor.name')
+    //                         ->limit(5);
 
-        $search = !empty($request->cari) ? ($request->cari) : ('');
+    //     $search = !empty($request->cari) ? ($request->cari) : ('');
 
-        if($search){
-           $data_pasien->where('data_pasien.nama_pasien', 'like', '%' .$search . '%');
-        }
+    //     if($search){
+    //        $data_pasien->where('data_pasien.nama_pasien', 'like', '%' .$search . '%');
+    //     }
 
-        $data = $data_pasien->limit(5)->get();
+    //     $data = $data_pasien->limit(5)->get();
   
-        $response = array();
-        foreach($data as $pasien){
-           $response[] = array(
-               "value" => $pasien->id,
-               "label" => $pasien->nama_pasien,
-               "faskes" => $pasien->nama_faskes,
-               "kecamatan" => $pasien->nama_kecamatan
-            );
-        }
-        return response()->json($response);
-    }
+    //     $response = array();
+    //     foreach($data as $pasien){
+    //        $response[] = array(
+    //            "value" => $pasien->id,
+    //            "label" => $pasien->nama_pasien,
+    //            "faskes" => $pasien->nama_faskes,
+    //            "kecamatan" => $pasien->nama_kecamatan
+    //         );
+    //     }
+    //     return response()->json($response);
+    // }
 }
 
 

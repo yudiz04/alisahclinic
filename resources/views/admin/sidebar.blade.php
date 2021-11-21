@@ -34,21 +34,21 @@
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="{{url('/service')}}">
-            <i class="fas fa-syringe"></i>
-            <p>Service</p>
-          </a>
-        </li>
-        <li class="nav-item ">
           <a class="nav-link" href="{{url('/article')}}">
             <i class="material-icons">library_books</i>
             <p>Article</p>
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="{{url('banner')}}">
+          <a class="nav-link" href="{{url('/banner')}}">
             <i class="fas fa-file-medical"></i>
             <p>Banner</p>
+          </a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link" href="{{url('/app')}}">
+            <i class="fas fa-file-medical"></i>
+            <p>Appoinment</p>
           </a>
         </li>
         <li class="nav-item dropdown ">
