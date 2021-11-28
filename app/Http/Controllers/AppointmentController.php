@@ -15,12 +15,17 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $specialist_id = $request->specialist;
+        $doctor = [];
+        if ($specialist_id) {
+            $doctor = Doctor::where('specialist_id', $specialist_id)->get(); 
+        }
         $appointment = Appointment::all();
         $specialist = Specialist::all();
-        $doctor = Doctor::all();
-        return view('landingpage.appointment', compact('appointment', 'specialist', 'doctor'));
+        // $doctor = Doctor::all();
+        return view('landingpage.appointment', compact('appointment', 'specialist', 'doctor', 'specialist_id'));
     }
 
     /**
@@ -46,7 +51,7 @@ class AppointmentController extends Controller
         //return $request;
         // dd($request->all());
         $request->validate([
-            'subject' => 'required',
+            'specialist' => 'required',
             'doctor' => 'required',
             'date' => 'required',
             'time' => 'required',
@@ -60,7 +65,7 @@ class AppointmentController extends Controller
 
         Appointment::create([
 
-            'specialist_id' => $request->subject,
+            'specialist_id' => $request->specialist,
             'doctor_id' => $request->doctor,
             'request' => $request->keluhan,
             'date' => $request->date,

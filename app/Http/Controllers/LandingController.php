@@ -15,7 +15,7 @@ class LandingController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request) 
-    {
+    { 
         $specialist_id = $request->specialist;
         $doctor = [];
         if ($specialist_id) {
@@ -23,6 +23,12 @@ class LandingController extends Controller
         }
         $specialist = Specialist::all();
         return view('landingpage.index', compact('specialist', 'doctor', 'specialist_id'));
+    }
+
+    public function dokter(Doctor $doctor){
+
+        return view('landingpage.doctor', compact('doctor'));
+
     }
 
     public function getdoctor($id)

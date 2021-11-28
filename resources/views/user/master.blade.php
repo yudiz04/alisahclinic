@@ -7,6 +7,6 @@
 <body class="hold-transition sidebar-mini layout-fixed">
     @include('user.navbar')
     @yield('content') 
-    @include('user.footer')
+    @include('user.footer') 
 </body>
 </html>  

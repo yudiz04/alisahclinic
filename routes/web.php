@@ -21,8 +21,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [LandingController::class, 'index']);
+Route::get('/dokter', [LandingController::class, 'dokter']);
+Route::get('/appointment', [AppointmentController::class, 'index']);
+
 Route::resource('appointment', AppointmentController::class);
-Route::get('/getdoctor/{specialist}', [App\Http\Controllers\LandingController::class, 'getdoctor'])->name('getdoctor');
+
+// Route::get('/getdoctor/{specialist}', [App\Http\Controllers\LandingController::class, 'getdoctor'])->name('getdoctor');
 
 Route::get('/register', [AuthController::class, 'registrasi'])->name('register');
 Route::post('/register', [AuthController::class, 'registrasiStore']);
