@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Specialist;
 use Illuminate\Http\Request;
@@ -30,11 +30,12 @@ class LandingController extends Controller
         return view('landingpage.doctor', compact('doctor'));
 
     }
-
+ 
     public function getdoctor($id)
     {
         echo json_encode(DB::table('doctors')->where('specialist_id', $id)->get());
     }
+    
     /**
      * Show the form for creating a new resource.
      *
@@ -42,7 +43,9 @@ class LandingController extends Controller
      */
     public function create()
     {
-        //
+        $specialist = Specialist::all();
+        $doctor = Doctor::all();
+        return view('landingpage.index', compact('specialist', 'doctor'));
     }
 
     /**
@@ -53,7 +56,34 @@ class LandingController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+        dd($request->all());
+        // $request->validate([
+        //     'specialist' => 'required',
+        //     'doctor' => 'required',
+        //     'date' => 'required',
+        //     'time' => 'required',
+        //     'keluhan' => 'required',
+        //     'name' => 'required',
+        //     'birth' => 'required',
+        //     'gender' => 'required',
+        //     'email' => 'required|email',
+        //     'contact' => 'required'
+        // ]);
+
+        // Appointment::create([
+
+        //     'specialist_id' => $request->specialist,
+        //     'doctor_id' => $request->doctor,
+        //     'request' => $request->keluhan,
+        //     'date' => $request->date,
+        //     'time' => $request->time,
+        //     'patient_name' => $request->name,
+        //     'gender' => $request->gender,
+        //     'birth' => $request->birth,
+        //     'email' => $request->email,
+        //     'contact' => $request->contact
+        // ]);
     }
 
     /**

@@ -13,9 +13,9 @@
           </div>
         </div> 
         <div class="col-lg-3">
-          <h4 class="links">
+          <h5 class="links">
             Links
-          </h4>
+          </h5>
           <div class="footer-links">
             <a class="active" href="index.html">
               Beranda
@@ -35,9 +35,9 @@
           </div>
         </div>
         <div class="col-lg-3">
-          <h4>
+          <h5 class="addres">
             Alamat kami
-          </h4>
+          </h5>
           <div class="footer-contact">
             <a href="">
               <i class="fas fa-map-marker-alt fa-1x map"><span>Location</span></i>
@@ -46,9 +46,9 @@
           </div>
         </div>
         <div class="col-lg-3">
-          <h4>
+          <h5 class="media">
             Social Media
-          </h4>
+          </h5>
           <div class="footer-social">
             <a href="">
               <i class="fab fa-facebook-f fa-2x"></i>
@@ -69,49 +69,15 @@
     <div class="footer-info text-center">
       <p>
         &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="https://html.design/">Free Html Templates<br><br></a>
+        <a href="https://html.design/">KLINIK ALISAH<br><br></a>
         &copy; <span id="displayYear"></span> Distributed By
-        <a href="https://themewagon.com/">ThemeWagon</a>
+        <a href="https://themewagon.com/">TerracoStd</a>
       </p>
 
     </div>
-    </div>
+    
   </footer>
   
   <script src="{{asset('assets/user/js/bootstrap.min.js')}}"></script> 
 
   <script src="{{asset('assets/user/js/main.js')}}"></script>
-
-  
-
-  {{-- <script src="{{asset('assets/user/js/owl.carousel.min.js')}}"></script> --}}
-  
-  {{-- <script>
-    $(document).ready(function() {
-      $('#specialist').on('change', function() {
-        let id = $(this).val();
-        $('#doctor').empty();
-        $('#doctor').append('<a class="dropdown-item" disabled>Processing...</a>');
-        $.ajak({
-          type:'GET',
-          url:'getdoctor/'+id,
-          success: function(response) {
-            var response = JSON.parse(response);
-            console.log.(response);
-            $('#doctor').empty();
-            response.forEach(element => {
-              $('#doctor').append(
-                `<option value="${element['id']}">${element['name']}</option>`
-              );
-          });
-        }
-      });
-    });
-  });
-  </script> --}}
-
-  {{-- <script src="{{asset('assets/user/vendor/jquery/jquery.min.js')}}"></script>
-  <script src="{{asset('assets/user/js/main.js')}}"></script>
-
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script> --}}

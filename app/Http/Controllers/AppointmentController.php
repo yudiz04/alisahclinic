@@ -47,11 +47,13 @@ class AppointmentController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
+    {   
+        // return 'disini';
         //return $request;
         // dd($request->all());
         $request->validate([
-            'specialist' => 'required',
+            // 'specialist' => 'required',
+            'spesialist_input' => 'required',
             'doctor' => 'required',
             'date' => 'required',
             'time' => 'required',
@@ -65,13 +67,13 @@ class AppointmentController extends Controller
 
         Appointment::create([
 
-            'specialist_id' => $request->specialist,
+            'specialist_id' => $request->spesialist_input,
             'doctor_id' => $request->doctor,
             'request' => $request->keluhan,
             'date' => $request->date,
-            'time' => "Pagi",
+            'time' => $request->time,
             'patient_name' => $request->name,
-            'gender' => "Pria",
+            'gender' => $request->gender,
             'birth' => $request->birth,
             'email' => $request->email,
             'contact' => $request->contact
@@ -137,6 +139,11 @@ class AppointmentController extends Controller
     {
         {}
     }
+
+    // public function getdoctor($id)
+    // {
+    //     echo json_encode(DB::table('doctors')->where('specialist_id',$id)->get());
+    // }
 
     // public function coba(Request $request)
     // {

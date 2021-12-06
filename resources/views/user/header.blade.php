@@ -16,8 +16,6 @@
 
     <link rel="stylesheet" href="{{asset('assets/user/css/animate.min.css')}}">
 
-    <script src="https://unpkg.com/scrollreveal"></script>
-
     {{-- <!-- Font Icon -->
     <link rel="stylesheet" href="{{asset('assets/user/fonts/material-icon/css/material-design-iconic-font.min.css')}}"> --}}
 

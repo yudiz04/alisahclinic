@@ -3,6 +3,7 @@
     
 @section('content')
 <body>
+  <section class="doctor_section">
     <div class="container">
         <div class="heading_container heading_center">
           <h2 class="doc text-center">
@@ -67,5 +68,6 @@
           </a>
         </div>
       </div>
+  </section>
 </body>
 @endsection

@@ -1,4 +1,4 @@
-{{-- @extends('admin.master')
+@extends('admin.master')
 @section('title', 'appointment')
 
 @section('content')
@@ -156,4 +156,4 @@
 
     </html>
 
-@endsection --}} 
+@endsection

@@ -72,7 +72,7 @@ class DoctorController extends Controller
         //
     }
 
-    /**
+    /** 
      * Show the form for editing the specified resource.
      *
      * @param  \App\Models\Doctor  $doctor
@@ -80,7 +80,7 @@ class DoctorController extends Controller
      */
     public function edit(Doctor $doctor)
     {
-        $doctor = Doctor::all();
+        $specialist = Specialist::all();
         return view('doctor.edit', compact('specialist', 'doctor'));
     }
 
