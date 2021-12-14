@@ -6,6 +6,7 @@ use App\Http\Controllers\FormController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SpecialistController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\AppointmentController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index']);
 Route::get('/dokter', [LandingController::class, 'dokter']);
+Route::get('/artikel', [LandingController::class, 'artikel']);
 // Route::get('/appointment', [AppointmentController::class, 'index']);
 
 Route::resource('appointment', AppointmentController::class);
@@ -39,5 +41,6 @@ Route::group(['middleware' => ['auth', 'super']], function(){
 Route::get('/home', [HomeController::class, 'index']);
 Route::resource('specialist', SpecialistController::class);
 Route::resource('doctor', DoctorController::class);
+Route::resource('article', ArticleController::class);
 // Route::resource('appointment', AppointmentController::class);
 });

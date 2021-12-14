@@ -11,7 +11,7 @@
             <a class="nav-link" href="{{url('/dokter')}}">Dokter</a>
             <a class="nav-link" href="#">Fasilitas</a>
             {{-- <a class="nav-link" href="{{url('/appointment')}}">Form</a> --}}
-            <a class="nav-link" href="#">Artikel</a>
+            <a class="nav-link" href="{{url('/artikel')}}">Artikel</a>
         </div>
       </div>
     </div>

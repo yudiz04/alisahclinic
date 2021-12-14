@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\Doctor;
 use App\Models\Specialist;
+use App\Models\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -30,11 +31,17 @@ class LandingController extends Controller
         return view('landingpage.doctor', compact('doctor'));
 
     }
- 
-    public function getdoctor($id)
-    {
-        echo json_encode(DB::table('doctors')->where('specialist_id', $id)->get());
+
+    public function artikel(Article $article){
+
+        return view('landingpage.article', compact('article'));
+
     }
+ 
+    // public function getdoctor($id)
+    // {
+    //     echo json_encode(DB::table('doctors')->where('specialist_id', $id)->get());
+    // }
     
     /**
      * Show the form for creating a new resource.

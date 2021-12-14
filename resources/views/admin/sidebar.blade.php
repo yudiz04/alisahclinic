@@ -40,12 +40,6 @@
           </a>
         </li>
         <li class="nav-item ">
-          <a class="nav-link" href="{{url('/banner')}}">
-            <i class="fas fa-file-medical"></i>
-            <p>Banner</p>
-          </a>
-        </li>
-        <li class="nav-item ">
           <a class="nav-link" href="{{url('/app')}}">
             <i class="fas fa-file-medical"></i>
             <p>Appoinment</p>
