@@ -25,7 +25,7 @@ class AppointmentController extends Controller
         $appointment = Appointment::all();
         $specialist = Specialist::all();
         // $doctor = Doctor::all();
-        return view('landingpage.appointment', compact('appointment', 'specialist', 'doctor', 'specialist_id'));
+        return view('appointment.index', compact('appointment', 'specialist', 'doctor', 'specialist_id'));
     }
 
     /**
@@ -37,7 +37,7 @@ class AppointmentController extends Controller
     {
         $specialist = Specialist::all();
         $doctor = Doctor::all();
-        return view('landingpage.appointment', compact('specialist', 'doctor'));
+        return view('appointment.index', compact('specialist', 'doctor'));
     }
 
     /**
@@ -92,7 +92,7 @@ class AppointmentController extends Controller
         // // $appointment->contact = $request->contact;
         // $appointment->save();
 
-        // return redirect('/home')->with('Janji', 'berhasil ditambahkan');
+        return redirect('/');
     }
 
     /**

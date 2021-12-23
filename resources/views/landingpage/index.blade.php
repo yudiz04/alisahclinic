@@ -56,152 +56,152 @@
                                             {{-- <form action="{{ url('/appointment') }}" id="post" method="POST"
                                                 enctype="multipart/form-data">
                                                 @csrf --}}
-                                            
+
+                                            <div class="col-12">
+                                                <form action="{{ url('/') }}" id="form_id" role="form"
+                                                    class="lead">
+                                                    <div class="form-group">
+                                                        <select name="specialist"
+                                                            class="form-control @error('specialist') is-invalid @enderror"
+                                                            id="specialist"
+                                                            onChange="document.getElementById('form_id').submit();"
+                                                            required>
+                                                            <option selected value="">Pilih Spesialist</option>
+                                                            @foreach ($specialist as $item)
+                                                                <option @if ($specialist_id == $item->id) ? {{ 'selected' }} : '' @endif
+                                                                    value="{{ $item->id }}">
+                                                                    {{ $item->subject }}</option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <form action="{{ url('/appointment') }}" id="post" method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+
+                                                @if (isset($_GET['specialist']))
+                                                    <input type="hidden" name="spesialist_input"
+                                                        value="{{ $_GET['specialist'] }}">
+                                                @endif
+
                                                 <div class="col-12">
-                                                    <form action="{{ url('/') }}" id="form_id" role="form"
-                                                        class="lead">
+                                                    <div class="form-group">
+                                                        <select name="doctor"
+                                                            class="form-control @error('doctor') is-invalid @enderror"
+                                                            id="doctor">
+                                                            <option selected value="">Pilih Dokter</option>
+                                                            @foreach ($doctor as $item)
+                                                                <option value="{{ $item->id }}">{{ $item->name }}
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="row">
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
                                                         <div class="form-group">
-                                                            <select name="specialist"
-                                                                class="form-control @error('specialist') is-invalid @enderror"
-                                                                id="specialist"
-                                                                onChange="document.getElementById('form_id').submit();"
-                                                                required>
-                                                                <option selected value="">Pilih Spesialist</option>
-                                                                @foreach ($specialist as $item)
-                                                                    <option @if ($specialist_id == $item->id) ? {{ 'selected' }} : '' @endif
-                                                                        value="{{ $item->id }}">
-                                                                        {{ $item->subject }}</option>
-                                                                @endforeach
+                                                            <input type="text" onfocus="(this.type='date')" name="date"
+                                                                class="form-control" placeholder="Pilih Tanggal"
+                                                                @error('date') is-invalid @enderror id="date"
+                                                                value="{{ old('date') }}">
+                                                            @error('date')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <select id="time" name="time" class="form-select"
+                                                                aria-label=".form-select-sm example">
+                                                                {{-- onChange="document.getElementById('form_id').submit();" required> --}}
+                                                                <option selected value="">Pilih Waktu</option>
+                                                                <option value="Pagi">Pagi</option>
+                                                                <option value="Siang">Siang</option>
                                                             </select>
                                                         </div>
-                                                    </form>
-                                                </div>
-                                                <form action="{{ url('/appointment') }}" id="post" method="POST"
-                                                    enctype="multipart/form-data">
-                                                    @csrf
-
-                                                    @if (isset($_GET['specialist']))
-                                                        <input type="hidden" name="spesialist_input"
-                                                            value="{{ $_GET['specialist'] }}">
-                                                    @endif
-
+                                                    </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
-                                                            <select name="doctor"
-                                                                class="form-control @error('doctor') is-invalid @enderror"
-                                                                id="doctor">
-                                                                <option selected value="">Pilih Dokter</option>
-                                                                @foreach ($doctor as $item)
-                                                                    <option value="{{ $item->id }}">{{ $item->name }}
-                                                                    </option>
-                                                                @endforeach
+                                                            <input type="text" class="form-control" name="keluhan"
+                                                                id="keluhan" placeholder="Keluhan">
+                                                        </div>
+                                                    </div>
+                                                    <h5>Data Pasien</h5>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="text" name="name"
+                                                                class="form-control @error('name') is-invalid @enderror"
+                                                                id="name" value="{{ old('name') }}"
+                                                                placeholder="Nama Lengkap">
+                                                            @error('name')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <select id="gender" name="gender" class="form-select"
+                                                                aria-label=".form-select-sm example">
+                                                                {{-- onChange="document.getElementById('form_id').submit();" required> --}}
+                                                                <option selected value="">Jenis Kelamin</option>
+                                                                <option value="Pria">Pria</option>
+                                                                <option value="Wanita">Wanita</option>
                                                             </select>
                                                         </div>
                                                     </div>
-                                            
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="text" onfocus="(this.type='date')" name="birth"
+                                                                class="form-control" placeholder="Tanggal Lahir"
+                                                                @error('birth') is-invalid @enderror" id="birth"
+                                                                value="{{ old('birth') }}">
+                                                            @error('birth')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="email" name="email"
+                                                                class="form-control @error('email') is-invalid @enderror"
+                                                                id="email" value="{{ old('email') }}"
+                                                                placeholder="Alamat Email">
+                                                            @error('email')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-xs-6 col-sm-6 col-md-6">
+                                                        <div class="form-group">
+                                                            <input type="text" name="contact"
+                                                                class="form-control @error('contact') is-invalid @enderror"
+                                                                id="contact" value="{{ old('contact') }}"
+                                                                placeholder="No HP">
+                                                            @error('contact')
+                                                                <div class="invalid-feedback">
+                                                                    {{ $message }}
+                                                                </div>
+                                                            @enderror
+                                                        </div>
+                                                    </div>
+                                                </div>
 
-                                            <div class="row">
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" onfocus="(this.type='date')" name="date"
-                                                            class="form-control" placeholder="Pilih Tanggal"
-                                                            @error('date') is-invalid @enderror id="date"
-                                                            value="{{ old('date') }}">
-                                                        @error('date')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <select id="time" name="time" class="form-select"
-                                                            aria-label=".form-select-sm example">
-                                                            {{-- onChange="document.getElementById('form_id').submit();" required> --}}
-                                                            <option selected value="">Pilih Waktu</option>
-                                                            <option value="Pagi">Pagi</option>
-                                                            <option value="Siang">Siang</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="form-group">
-                                                        <input type="text" class="form-control" name="keluhan"
-                                                            id="keluhan" placeholder="Keluhan">
-                                                    </div>
-                                                </div>
-                                                <h5>Data Pasien</h5>
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" name="name"
-                                                            class="form-control @error('name') is-invalid @enderror"
-                                                            id="name" value="{{ old('name') }}"
-                                                            placeholder="Nama Lengkap">
-                                                        @error('name')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <select id="gender" name="gender" class="form-select"
-                                                            aria-label=".form-select-sm example">
-                                                            {{-- onChange="document.getElementById('form_id').submit();" required> --}}
-                                                            <option selected value="">Jenis Kelamin</option>
-                                                            <option value="Pria">Pria</option>
-                                                            <option value="Wanita">Wanita</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" onfocus="(this.type='date')" name="birth"
-                                                            class="form-control" placeholder="Tanggal Lahir"
-                                                            @error('birth') is-invalid @enderror" id="birth"
-                                                            value="{{ old('birth') }}">
-                                                        @error('birth')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="email" name="email"
-                                                            class="form-control @error('email') is-invalid @enderror"
-                                                            id="email" value="{{ old('email') }}"
-                                                            placeholder="Alamat Email">
-                                                        @error('email')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-6 col-sm-6 col-md-6">
-                                                    <div class="form-group">
-                                                        <input type="text" name="contact"
-                                                            class="form-control @error('contact') is-invalid @enderror"
-                                                            id="contact" value="{{ old('contact') }}"
-                                                            placeholder="No HP">
-                                                        @error('contact')
-                                                            <div class="invalid-feedback">
-                                                                {{ $message }}
-                                                            </div>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
+                                                <input type="submit" value="Submit" class="btn btn-primary"
+                                                    onChange="document.getElementById('post').submit();">
 
-                                            <input type="submit" value="Submit" class="btn btn-primary"
-                                                onChange="document.getElementById('post').submit();">
-
-                                            {{-- <p class="lead-footer">* Konfirmasi selanjutnya melalui whatsapp dan alamat email</p> --}}
-                                            {{-- </form> --}}
+                                                {{-- <p class="lead-footer">* Konfirmasi selanjutnya melalui whatsapp dan alamat email</p> --}}
+                                                {{-- </form> --}}
                                             </form>
                                         </div>
 
@@ -309,32 +309,32 @@
 
         <section id="content">
             <div class="container">
-                <h3 class="fasi text-center pt-5 pb-3">FASILITAS</h3>
+                <h3 class="fasi text-center pt-5 pb-3" style="color:#2DB5D7">FASILITAS</h3>
                 <div class="row pt-3 pb-4">
                     <div class="col-md-3 text-center animate__animated animate__fadeInUp animate__delay-2s"
                         data-aos="fade-up">
-                        <div class="text-center box"><i class="fas fa-user-md fa-3x"></i></div>
+                        <div class="text-center box"><i class="fas fa-user-md fa-3x" style="color: #2DB5D7"></i></div>
                         <p class="font-weight-light">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor,
                             repellat.
                         </p>
                     </div>
                     <div class="col-md-3 text-center animate__animated animate__fadeInUp animate__delay-2s"
                         data-aos="fade-up">
-                        <div class="text-center box"><i class="fas fa-plus fa-3x"></i></div>
+                        <div class="text-center box"><i class="fas fa-plus fa-3x" style="color: #2DB5D7"></i></div>
                         <p class="font-weight-light">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dolor,
                             repellat.
                         </p>
                     </div>
                     <div class="col-md-3 text-center animate__animated animate__fadeInUp animate__delay-2s"
                         data-aos="fade-up" data-aos-delay="100">
-                        <div class="text-center box"><i class="fas fa-syringe fa-3x" style=" color: peachpuff"></i></div>
+                        <div class="text-center box"><i class="fas fa-syringe fa-3x" style=" color: #2DB5D7"></i></div>
                         <p class="font-weight-light">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Mollitia,
                             inventore!
                         </p>
                     </div>
                     <div class="col-md-3 text-center animate__animated animate__fadeInUp animate__delay-2s"
                         data-aos-delay="100" data-aos="fade-up">
-                        <div class="text-center box"><i class="fas fa-procedures fa-3x" style="color: peachpuff"></i></div>
+                        <div class="text-center box"><i class="fas fa-procedures fa-3x" style="color: #2DB5D7"></i></div>
                         <p class="font-weight-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam,
                             odit.</p>
                     </div>
@@ -347,7 +347,7 @@
             <div class="container">
                 <div class="heading_container heading_center">
                     <h2 class="doc text-center pt-3">
-                        Our Doctors
+                        Dokter
                     </h2>
                     <p class="col-md-10 mx-auto px-0">
                         Incilint sapiente illo quo praesentium officiis laudantium nostrum, ad adipisci cupiditate sit,
@@ -406,7 +406,7 @@
                 </div>
                 <div class="btn-box">
                     <a href="{{ url('/dokter') }}">
-                        View All
+                        Lihat Semua
                     </a>
                 </div>
             </div>
@@ -416,7 +416,7 @@
             <div class="container overflow-hidden py-5">
                 <div class="row gx-5 gx-sm-3 gx-lg-5 gy-lg-5 gy-3 pb-3 projects">
                     <div class="row">
-                        <div class="col-lg-6 offset-lg-3">
+                        <div class="col-lg-6 offset-lg-3" style="color:#2DB5D7">
                             <h3>ARTIKEL</h3>
                         </div>
                     </div>
@@ -476,6 +476,11 @@
                             </div>
                         </a>
                     </div><!-- End Recent Work -->
+                </div>
+                <div class="btn-box">
+                    <a href="{{ url('/artikel') }}">
+                        Lihat Semua
+                    </a>
                 </div>
             </div>
         </section>

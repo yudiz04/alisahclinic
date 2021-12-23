@@ -40,7 +40,7 @@ class ArticleController extends Controller
             'img' => 'required',
             'title' => 'required',
             'text' => 'required'
-        ],
+        ]
 
     );
         $img = $request->file('img');
@@ -48,7 +48,7 @@ class ArticleController extends Controller
         $img->move('dist/img', $nama_file); //proses upload foto kelaravel
 
         Article::create([
-            'img' => $request->img,
+            'img' => $nama_file,
             'title' => $request->title,
             'text' => $request->text
         ]);

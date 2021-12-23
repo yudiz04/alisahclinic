@@ -93,6 +93,12 @@ class LandingController extends Controller
         // ]);
     }
 
+    // public function success($id){
+
+    //     return view('landingpage.success', compact('success'));
+
+    // }
+
     /**
      * Display the specified resource.
      *

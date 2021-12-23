@@ -36,9 +36,9 @@
                             <form action="{{ url('/article') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="img">Article Photo</label>
-                                        <input type="file" class="form-control-file" name="img" id="img">
+                                    <div class="mb-3">
+                                        <label for="img" class="form-label">Image</label>
+                                        <input class="form-control" type="file" name="img" id="img">
                                     </div>
                                     <div class="form-body">
                                         <div class="form-group">

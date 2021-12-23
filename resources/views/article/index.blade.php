@@ -66,7 +66,7 @@
                                         @foreach ($article as $item)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $item->img }}</td>
+                                                <td><img src="{{asset('dist/img/' . $item->img)}}" alt=""></td>
                                                 <td>{{ $item->title }}</td>
                                                 <td>{{ $item->text }}</td>
                                                 <td>
